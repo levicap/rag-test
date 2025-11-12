@@ -34,21 +34,23 @@
   <h1>Welcome to My Simple Page</h1>
   <p>minisport</p>
 
+
   <!-- 💬 Chatwoot Widget Script -->
   <script>
-    (function(d, t) {
-      var BASE_URL = "https://chatwoot.moezzhioua.com";  // ← CHANGED THIS
-      var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
-      g.src = BASE_URL + "/packs/js/sdk.js";
+    (function(d,t) {
+      var BASE_URL="http://chat.moezzhioua.com";
+      var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=BASE_URL+"/packs/js/sdk.js";
       g.async = true;
-      s.parentNode.insertBefore(g, s);
-      g.onload = function() {
+      s.parentNode.insertBefore(g,s);
+      g.onload=function(){
         window.chatwootSDK.run({
-          websiteToken: 'crC7Ju2Fii7aoMBjiUEMQrHB',
+          websiteToken: 'ockANYBu2mS8uVGh1CqFB65G',
           baseUrl: BASE_URL
-        });
-      };
-    })(document, "script");
+        })
+      }
+    })(document,"script");
   </script>
 </body>
 </html>
+
