@@ -40,26 +40,27 @@
     window.chatwootWebChannel = {disableBranding:true}
   </script>
 
-  <script>
+<script>
   (function(d,t) {
-    var BASE_URL="https://chat.moezzhioua.com/";
+    var BASE_URL="https://chat.moezzhioua.com";
     var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
     g.src=BASE_URL+"/packs/js/sdk.js";
     g.async = true;
     s.parentNode.insertBefore(g,s);
     g.onload=function(){
       window.chatwootSDK.run({
-        websiteToken: 'ockANYBu2mS8uVGh1CqFB65G',
+        websiteToken: 'BkFuagqkqDPGrDtLjJZ1f9ix',
         baseUrl: BASE_URL
       })
     }
   })(document,"script");
 </script>
 
+
 </head>
 <body>
   <main style="padding: 24px;">
-    <h1>Demo: n8n-powered Chatbot</h1>
+    <h1>Demo: minisport</h1>
     <p>This page mounts the BuildShip Chat Widget and routes messages to your n8n REST workflow.</p>
   </main>
 </body>
