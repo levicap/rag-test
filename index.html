@@ -1,56 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Simple Webpage</title>
+  <meta charset="utf-8" />
+  <title>BuildShip Chat Widget — n8n REST</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Optional theming -->
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 50px;
-      background-color: #f4f4f9;
-    }
-    h1 {
-      color: #333;
-    }
-    p {
-      color: #666;
-    }
-    button {
-      background-color: #007bff;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
+  /* Hide any link pointing to chatwoot.com inside the widget iframe or container */
+  #chatwoot-widget-container a[href*="chatwoot.com"],
+  #chatwoot-widget-container .branding--link,
+  #chatwoot-widget-container .__web-inspector-hide-shortcut__ {
+    display: none !important;
+  }
+  :root {
+    --buildship-chat-widget-primary-color: #0ea5e9;
+    --buildship-chat-widget-radius: 14px;
+  }
+  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; }
+  .launcher {
+    position: fixed;
+    right: 18px; bottom: 18px;
+    background: #0ea5e9; color: #fff; border: 0; border-radius: 999px;
+    padding: 12px 16px; font-weight: 600; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,.15);
+  }
+  #chatwoot-widget-container a[href*="chatwoot.com"] {
+    display: none !important;
+  }
   </style>
+
+  <!-- 👇 Add settings BEFORE loading the SDK -->
+  <script>
+    window.chatwootSettings = {
+      position: "right",
+      locale: "en",
+      type: "standard",
+      disableBranding: true
+    };
+    window.chatwootWebChannel = {disableBranding:true}
+  </script>
+
+  <script>
+  (function(d,t) {
+    var BASE_URL="http://chat.moezzhioua.com/";
+    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=BASE_URL+"/packs/js/sdk.js";
+    g.async = true;
+    s.parentNode.insertBefore(g,s);
+    g.onload=function(){
+      window.chatwootSDK.run({
+        websiteToken: 'ockANYBu2mS8uVGh1CqFB65G',
+        baseUrl: BASE_URL
+      })
+    }
+  })(document,"script");
+</script>
+
 </head>
 <body>
-  <h1>Welcome to My Simple Page</h1>
-  <p>minisport</p>
-
-
-  <!-- 💬 Chatwoot Widget Script -->
-  <script>
-    (function(d,t) {
-      var BASE_URL="https://chat.moezzhioua.com";
-      var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src=BASE_URL+"/packs/js/sdk.js";
-      g.async = true;
-      s.parentNode.insertBefore(g,s);
-      g.onload=function(){
-        window.chatwootSDK.run({
-          websiteToken: 'ockANYBu2mS8uVGh1CqFB65G',
-          baseUrl: BASE_URL
-        })
-      }
-    })(document,"script");
-  </script>
+  <main style="padding: 24px;">
+    <h1>Demo: n8n-powered Chatbot</h1>
+    <p>This page mounts the BuildShip Chat Widget and routes messages to your n8n REST workflow.</p>
+  </main>
 </body>
+
+<script>
+function hideChatwootBranding() {
+  const brandingLink = document.querySelector('a[href^="https://www.chatwoot.com/?utm_source="]');
+  if (brandingLink) {
+    brandingLink.style.display = 'none';
+    if (brandingLink.parentNode) {
+      brandingLink.parentNode.style.display = 'none';
+    }
+  }
+}
+hideChatwootBranding();
+setInterval(hideChatwootBranding, 1000);
+</script>
 </html>
+
 
